@@ -5,9 +5,26 @@
     @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg;
   }
 
+  .instrument-serif-regular {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
   .instrument-serif-regular-italic {
     font-family: "Instrument Serif", serif;
     font-weight: 400;
     font-style: italic;
+  }
+
+  .dm-sans {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .div {
+    
   }
 }
