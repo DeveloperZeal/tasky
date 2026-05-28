@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg;
+  }
+
+  .instrument-serif-regular-italic {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+}
