@@ -21,3 +21,7 @@ import userAccountImg from "@/assets/img/user-account.jpg";
     </RouterLink>
   </nav>
 </template>
+
+<style scoped>
+  
+</style>

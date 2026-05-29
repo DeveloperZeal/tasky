@@ -17,6 +17,17 @@
     font-style: italic;
   }
 
+  .instrument-serif-bold {
+    font-family: "Instrument Serif", serif;
+    font-weight: 600;
+  }
+
+  .instrument-serif-bold-italic {
+    font-family: "Instrument Serif", serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
   .dm-sans {
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
@@ -24,7 +35,19 @@
     font-style: normal;
   }
 
-  .div {
-    
+  .prev-month-date {
+    @apply text-[#b4b4b4];
+  }
+
+  .curr-month-date {
+    @apply text-[#e0e0e0];
+  }
+
+  .today {
+    @apply text-blue-300 font-bold;
+  }
+
+  .cal-nav-btn {
+    cursor: pointer;
   }
 }
