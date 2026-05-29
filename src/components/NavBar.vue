@@ -11,7 +11,6 @@ import userAccountImg from "@/assets/img/user-account.jpg";
       Tasky.
     </RouterLink>
 
-
     <RouterLink to="/profile">
       <img
         :src="userAccountImg"
@@ -23,5 +22,11 @@ import userAccountImg from "@/assets/img/user-account.jpg";
 </template>
 
 <style scoped>
-  
+nav {
+  animation: 0.8s fade-in-up ease both;
+}
+img {
+  animation: 0.9s fade ease both;
+  animation-delay: 0.4s;
+}
 </style>
