@@ -44,8 +44,12 @@
   }
 
   /* ─── Calendar date states ────────────────────────────────── */
+  .days {
+    @apply text-[#dee2e6] text-[12px];
+  }
+
   .prev-month-date {
-    @apply text-[#b4b4b4];
+    @apply text-[#adb5bd];
   }
 
   .curr-month-date {
@@ -53,7 +57,14 @@
   }
 
   .today {
-    @apply text-blue-300 font-bold;
+    @apply font-bold bg-blue-100/25;
+  }
+
+  .date {
+    padding: 5px;
+    margin: 3px;
+    @apply rounded-2xl;
+    /* color: #f8f9fa; */;
   }
 
   .cal-nav-btn {
@@ -117,7 +128,7 @@
   /* ─── Accessibility ───────────────────────────────────────────
      Respects user OS setting to reduce motion. Disables all
      animations and transitions for users who need it.           */
-  @media (prefers-reduced-motion: reduce) {
+  /* @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
@@ -125,5 +136,5 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-  }
+  } */
 }

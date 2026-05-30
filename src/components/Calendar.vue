@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import type { DateType } from "@/types/Date";
+import { useCalendarStore } from "@/stores/Calendar";
+import { storeToRefs } from "pinia";
 
 const days = ["S", "M", "T", "W", "T", "F", "S"];
 const months = [
@@ -18,10 +20,13 @@ const months = [
   "December",
 ];
 
+const calendar = useCalendarStore();
+
 const today = new Date();
 
-const year = ref(today.getFullYear());
-const monthIdx = ref(today.getMonth());
+const { year, monthIdx } = storeToRefs(calendar);
+
+const { nextMon, prevMon } = calendar;
 
 const dates = computed<DateType[]>(() => {
   const firstDay = new Date(year.value, monthIdx.value, 1).getDay();
@@ -68,24 +73,6 @@ const dates = computed<DateType[]>(() => {
 
   return result;
 });
-
-const prevMonth = () => {
-  if (monthIdx.value === 0) {
-    year.value -= 1;
-    monthIdx.value = 11;
-  } else {
-    monthIdx.value -= 1;
-  }
-};
-
-const nextMonth = () => {
-  if (monthIdx.value === 11) {
-    year.value += 1;
-    monthIdx.value = 0;
-  } else {
-    monthIdx.value += 1;
-  }
-};
 </script>
 
 <template>
@@ -93,31 +80,27 @@ const nextMonth = () => {
     <div
       class="flex items-center justify-between text-[14px] mb-2 px-3 font-bold"
     >
-      <button class="cal-nav-btn" @click.prevent="prevMonth"><</button>
+      <button class="cal-nav-btn" @click.prevent="prevMon"><</button>
       <div class="flex gap-1">
         <p>{{ months[monthIdx] }}</p>
         <p>{{ year }}</p>
       </div>
       <!-- <button>Today</button> -->
-      <button class="cal-nav-btn" @click.prevent="nextMonth">></button>
+      <button class="cal-nav-btn" @click.prevent="nextMon">></button>
     </div>
     <div class="grid grid-cols-7 gap-2">
-      <div
-        v-for="(day, index) in days"
-        :key="index"
-        class="days text-[#dddddd] text-sm"
-      >
+      <div v-for="(day, index) in days" :key="index" class="days">
         {{ day }}
       </div>
       <div v-for="(date, index) in dates" :key="index">
         <span
           v-if="date.isCurrentMonth"
-          class="curr-month-date"
+          class="curr-month-date date"
           :class="{ today: date.today }"
         >
           {{ date.date }}
         </span>
-        <span v-else class="prev-month-date">
+        <span v-else class="prev-month-date date">
           {{ date.date }}
         </span>
       </div>
